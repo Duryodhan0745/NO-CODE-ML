@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "015cf994-5a43-4bc6-89ca-3bfcfa6b4cbe",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "D:\\no_code_ml\\ai_execution\\architecture\\ai-workflow.workflow.json",
+  "output": "D:\\no_code_ml\\ai_execution\\architecture\\ai-workflow.html",
+  "specification": {
+    "sha256": "fa95d5dda7c7539ffeab6a60243bbf305fd807aaa0d0ef087c5e84bd847325ff",
+    "bytes": 3647
+  },
+  "artifact": {
+    "sha256": "1c8d1c05a4cc38b1487990a40dd31f3f358ed43d3c023ce72303045a952f86fe",
+    "bytes": 763946
+  }
+}
+
+
+

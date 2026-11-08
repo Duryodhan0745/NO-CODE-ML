@@ -1,0 +1,63 @@
+# Python environments
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Python caches and testing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Node dependencies
+node_modules/
+
+# Build outputs
+frontend/dist/
+dist/
+build/
+
+# Runtime databases
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# Runtime uploads
+uploads/
+backend/uploads/
+
+# Data Playground runtime storage
+backend/playground/storage/originals/
+backend/playground/storage/artifacts/
+backend/playground/storage/*.sqlite
+backend/playground/storage/*.sqlite3
+
+# Generated artifacts
+artifacts/
+archive/
+.buildathon_reference/
+.buildathon_work/
+
+# Logs and temporary files
+*.log
+*.tmp
+temp/
+tmp/
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+# Buildathon materials
+buildathon_deliverables/

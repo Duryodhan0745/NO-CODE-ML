@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {"title":"No-Code ML AI Integration Architecture","subtitle":"Evidence-derived boundary between the AI orchestrator and the existing FastAPI ML engine","output":"architecture/no-code-ml-ai-architecture.html","quality_profile":"showcase"},
+  "components": [
+    {"id":"user","type":"external","label":"User","sublabel":"goal, questions, approvals","pos":[40,280],"size":[150,66]},
+    {"id":"frontend","type":"frontend","label":"React workspace","sublabel":"AI welcome + ML workflow","pos":[250,280],"size":[170,66]},
+    {"id":"orchestrator","type":"backend","label":"AI orchestrator","sublabel":"intent, plan, policy, response","pos":[490,280],"size":[180,72],"tag":"Phase 2"},
+    {"id":"context","type":"database","label":"Context + events","sublabel":"conversation, memory, approvals","pos":[490,120],"size":[180,66],"tag":"new persistence"},
+    {"id":"registry","type":"backend","label":"Tool registry","sublabel":"allowlisted typed adapters","pos":[740,280],"size":[180,66],"tag":"Pydantic contracts"},
+    {"id":"api","type":"backend","label":"FastAPI ML API","sublabel":"existing /api routes","pos":[990,280],"size":[180,66]},
+    {"id":"services","type":"backend","label":"ML services","sublabel":"dataset, workspace, train, predict","pos":[990,440],"size":[180,66]},
+    {"id":"engine","type":"backend","label":"ML engine","sublabel":"scikit-learn, XGBoost, Optuna","pos":[740,440],"size":[180,66]},
+    {"id":"state","type":"database","label":"Workspace state","sublabel":"JSON projection + artifacts","pos":[1210,360],"size":[180,66]}
+  ],
+  "boundaries":[
+    {"kind":"region","label":"AI control plane","wraps":["orchestrator","context","registry"]},
+    {"kind":"region","label":"Existing ML execution plane","wraps":["api","services","engine","state"]}
+  ],
+  "connections":[
+    {"id":"user-ui","from":"user","to":"frontend","variant":"emphasis"},
+    {"id":"ui-orchestrator","from":"frontend","to":"orchestrator","variant":"emphasis"},
+    {"id":"orchestrator-context","from":"orchestrator","to":"context","label":"read / append","variant":"dashed","fromSide":"top","toSide":"bottom"},
+    {"id":"orchestrator-registry","from":"orchestrator","to":"registry","variant":"security"},
+    {"id":"registry-api","from":"registry","to":"api","variant":"emphasis"},
+    {"id":"api-services","from":"api","to":"services","variant":"default"},
+    {"id":"services-engine","from":"services","to":"engine","variant":"default"},
+    {"id":"services-state","from":"services","to":"state","label":"persist result / artifact","variant":"dashed"},
+    {"id":"api-result","from":"api","to":"registry","variant":"dashed"},
+    {"id":"registry-response","from":"registry","to":"orchestrator","label":"typed evidence","variant":"dashed"},
+    {"id":"orchestrator-ui","from":"orchestrator","to":"frontend","variant":"dashed"}
+  ],
+  "cards":[
+    {"dot":"cyan","title":"Control plane","items":["LLM proposes structured intent and plans","Backend policy owns authorization, validation, idempotency, and approvals"]},
+    {"dot":"emerald","title":"Execution plane","items":["Existing FastAPI routes and services remain authoritative","Metrics, artifacts, and errors come from real ML operations"]},
+    {"dot":"rose","title":"Safety boundary","items":["Training requires fresh approval scoped to configuration","Configuration changes invalidate downstream results"]}
+  ]
+}
+
+
+

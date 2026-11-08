@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "lifecycle",
+  "quality": "showcase",
+  "specification": {
+    "path": "D:\\no_code_ml\\ai_execution\\architecture\\workflow-state.lifecycle.json",
+    "sha256": "7570191ed3aa42330b9cc9f406b8844a809b0c258fe524bb73760416c5198111",
+    "bytes": 2516
+  },
+  "artifact": {
+    "path": "D:\\no_code_ml\\ai_execution\\architecture\\workflow-state.html",
+    "sha256": "6c7572d95d5b197b3bb8f84b22b85c807a91964d225a90c2f73f70c5689a5c3e",
+    "bytes": 759626
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "D:\\no_code_ml\\ai_execution\\architecture\\workflow-state.finalize.json",
+    "summaryReceipt": "D:\\no_code_ml\\ai_execution\\architecture\\workflow-state.finalize-summary.json",
+    "browserCheckReceipt": "D:\\no_code_ml\\ai_execution\\architecture\\workflow-state.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 5905
+}
+
+
+

@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {"title":"AI-assisted ML workflow","subtitle":"From a natural-language goal to a controlled existing ML operation","output":"architecture/ai-workflow.html","quality_profile":"showcase"},
+  "lanes":[{"id":"user","label":"User + workspace"},{"id":"ai","label":"AI orchestrator"},{"id":"policy","label":"Policy + approval"},{"id":"ml","label":"Existing ML tools"}],
+  "phases":[{"id":"understand","label":"Understand","fromCol":0,"toCol":1},{"id":"plan","label":"Plan + recommend","fromCol":2,"toCol":3,"variant":"emphasis"},{"id":"execute","label":"Apply + execute","fromCol":4,"toCol":5,"variant":"dashed"}],
+  "groups":[{"id":"reason","label":"Reasoning only","lane":"ai","fromCol":1,"toCol":4,"variant":"emphasis"},{"id":"approval","label":"Consequential action gate","lane":"policy","fromCol":4,"toCol":5,"variant":"security"},{"id":"evidence","label":"Actual backend evidence","lane":"ml","fromCol":4,"toCol":5,"variant":"dashed"}],
+  "mainPath":["goal","intent","plan","card","config","training","result"],
+  "nodes":[
+    {"id":"goal","lane":"user","col":0,"type":"external","label":"User goal","sublabel":"message + CSV","width":130},
+    {"id":"intent","lane":"ai","col":1,"type":"backend","label":"Intent result","sublabel":"kind + missing info","width":130},
+    {"id":"context","lane":"ai","col":2,"type":"database","label":"Dataset context","sublabel":"real profile outputs","width":130},
+    {"id":"plan","lane":"ai","col":3,"type":"backend","label":"Workflow plan","sublabel":"existing operations","width":130},
+    {"id":"card","lane":"ai","col":4,"type":"backend","label":"Recommendation card","sublabel":"supported params","width":145},
+    {"id":"config","lane":"policy","col":4,"type":"security","label":"Apply configuration","sublabel":"user-approved + validated","tag":"approval","width":145},
+    {"id":"training","lane":"policy","col":5,"type":"security","label":"Training approval","sublabel":"fresh fingerprint","tag":"mandatory","width":145},
+    {"id":"result","lane":"ml","col":5,"type":"backend","label":"ML result","sublabel":"metrics + artifacts","width":130},
+    {"id":"clarify","lane":"user","col":2,"type":"frontend","label":"Clarify","sublabel":"missing target / choice","width":130},
+    {"id":"failed","lane":"ml","col":4,"type":"security","label":"Tool failed","sublabel":"typed error","width":130}
+  ],
+  "edges":[
+    {"id":"goal-intent","from":"goal","to":"intent","label":"interpret","variant":"emphasis"},
+    {"id":"intent-plan","from":"intent","to":"plan","label":"route"},
+    {"id":"context-plan","from":"context","to":"plan","label":"facts"},
+    {"id":"plan-card","from":"plan","to":"card","label":"recommend"},
+    {"id":"card-config","from":"card","to":"config","label":"continue + approval","variant":"security"},
+    {"id":"config-training","from":"config","to":"training","label":"configured","variant":"security"},
+    {"id":"training-result","from":"training","to":"result","label":"approved tool call","variant":"emphasis"},
+    {"id":"result-failed","from":"result","to":"failed","label":"actual error","variant":"security","role":"error"},
+    {"id":"failed-plan","from":"failed","to":"plan","label":"recover / clarify","variant":"dashed","role":"return"}
+  ],
+  "cards":[{"dot":"cyan","title":"No silent execution","items":["Recommendations and configuration changes are separate from training","Final training always waits for explicit approval"]},{"dot":"emerald","title":"Real evidence","items":["Dataset facts, metrics, and errors come from existing tools","The LLM cannot invent supported parameters or results"]}]
+}
+
+
+

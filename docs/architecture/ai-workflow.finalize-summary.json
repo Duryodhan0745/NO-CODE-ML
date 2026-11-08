@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "D:\\no_code_ml\\ai_execution\\architecture\\ai-workflow.workflow.json",
+    "sha256": "fa95d5dda7c7539ffeab6a60243bbf305fd807aaa0d0ef087c5e84bd847325ff",
+    "bytes": 3647
+  },
+  "artifact": {
+    "path": "D:\\no_code_ml\\ai_execution\\architecture\\ai-workflow.html",
+    "sha256": "1c8d1c05a4cc38b1487990a40dd31f3f358ed43d3c023ce72303045a952f86fe",
+    "bytes": 763946
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "D:\\no_code_ml\\ai_execution\\architecture\\ai-workflow.finalize.json",
+    "summaryReceipt": "D:\\no_code_ml\\ai_execution\\architecture\\ai-workflow.finalize-summary.json",
+    "browserCheckReceipt": "D:\\no_code_ml\\ai_execution\\architecture\\ai-workflow.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 6554,
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "routesOverSuggestedBends": 2
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [],
+      "detours": [
+        {
+          "relationship": {
+            "id": "card-config",
+            "from": "card",
+            "to": "config",
+            "label": "continue + approval",
+            "collectionIndex": 0,
+            "artifactIndex": 1
+          },
+          "bends": 3,
+          "stretch": 1.178
+        },
+        {
+          "relationship": {
+            "id": "goal-intent",
+            "from": "goal",
+            "to": "intent",
+            "label": "interpret",
+            "collectionIndex": 4,
+            "artifactIndex": 5
+          },
+          "bends": 3,
+          "stretch": 1.261
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "card → config needs 3 bends: move node card or config so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "goal → intent needs 3 bends: move node goal or intent so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}
+
+
+

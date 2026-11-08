@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "diagram_type":"lifecycle",
+  "meta":{"title":"AI workflow state lifecycle","subtitle":"Phase-specific state with stale approval invalidation","output":"architecture/workflow-state.html","quality_profile":"showcase"},
+  "lanes":[{"id":"main","label":"Authoritative workflow"},{"id":"approval","label":"Approval + execution"},{"id":"terminal","label":"Terminal outcomes"}],
+  "states":[
+    {"id":"received","type":"start","label":"Received","sublabel":"user turn","lane":"main","col":0},
+    {"id":"planned","type":"active","label":"Plan ready","sublabel":"intent + context + plan","lane":"main","col":1},
+    {"id":"proposed","type":"waiting","label":"Recommendation proposed","sublabel":"structured card","lane":"main","col":2},
+    {"id":"configured","type":"active","label":"Configured","sublabel":"validated + applied","lane":"main","col":3},
+    {"id":"trainingApproval","type":"decision","label":"Training approval","sublabel":"fresh fingerprint required","lane":"approval","col":3},
+    {"id":"executing","type":"active","label":"Executing","sublabel":"existing train/optimize tool","lane":"approval","col":4},
+    {"id":"completed","type":"success","label":"Completed","sublabel":"actual metrics + artifacts","lane":"terminal","col":4},
+    {"id":"stale","type":"failure","label":"Approval invalidated","sublabel":"configuration changed","lane":"approval","col":2}
+  ],
+  "transitions":[
+    {"id":"receive-plan","from":"received","to":"planned","label":"enough context"},
+    {"id":"plan-propose","from":"planned","to":"proposed","label":"recommendation"},
+    {"id":"propose-config","from":"proposed","to":"configured","label":"approve + validate","variant":"security"},
+    {"id":"config-approval","from":"configured","to":"trainingApproval","label":"request training","variant":"security"},
+    {"id":"approval-execute","from":"trainingApproval","to":"executing","label":"fresh approval","variant":"security"},
+    {"id":"execute-complete","from":"executing","to":"completed","label":"tool success","variant":"emphasis"},
+    {"id":"config-stale","from":"configured","to":"stale","label":"upstream change","variant":"security"}
+  ],
+  "cards":[{"dot":"rose","title":"Invalidation rule","items":["Changing target, preprocessing, model, or parameters invalidates approval","Executed results are not reused after an upstream change"]},{"dot":"cyan","title":"Persistence rule","items":["Conversation is contextual","Workflow projection and approval events are authoritative"]}]
+}
+
+
+

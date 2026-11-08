@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "8e2a52fb-5bd8-42f1-be47-a41c419d5b8d",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "D:\\no_code_ml\\ai_execution\\architecture\\no-code-ml-ai-architecture.json",
+  "output": "D:\\no_code_ml\\ai_execution\\architecture\\rendered\\no-code-ml-ai-architecture.html",
+  "specification": {
+    "sha256": "9b4a9297f941ec204d036e179035822e40ecc69075aa77d013b3129531b68e26",
+    "bytes": 3437
+  },
+  "artifact": {
+    "sha256": "ad2358db34f41b67eec1b43393f966f0e5c9bef23f55aedcb6748ba6ab199b12",
+    "bytes": 762900
+  }
+}
+
+
+
